@@ -6,7 +6,7 @@ import Hobbies from './pages/Hobbies';
 
 function App() {
   return (
-    <Router basename="/JZSITE2025">
+    <Router basename="/">
       <Navbar />
       <div className="pt-20">
         <Routes>
