@@ -21,7 +21,7 @@ const Home = () => {
                     ECE Student at the University of Toronto
                 </p>
                 <p className="max-w-xl text-gray-600 text-lg">
-                    I’m passionate about building engaging user experiences, solving engineering problems,
+                    I'm passionate about building engaging user experiences, solving engineering problems,
                     and exploring the intersection of hardware and software. Welcome to my personal site!
                 </p>
             </section>

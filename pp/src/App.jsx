@@ -9,7 +9,7 @@ function App() {
   return (
     <Router basename="/JZSITE2025">
       <Navbar />
-      <div className="pt-20">
+      <div >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
