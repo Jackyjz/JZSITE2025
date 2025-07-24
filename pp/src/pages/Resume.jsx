@@ -22,17 +22,23 @@ export default function Resume() {
     const resumeFile = `${import.meta.env.BASE_URL}Jacky_Zhao_resume.pdf`;
 
     return (
-        <section className="pt-20 min-h-screen bg-gradient-to-tr from-blue-100 to-purple-200 p-6">            <div className="max-w-5xl mx-auto flex justify-between items-center mb-4">
-            <h1 className="text-3xl font-bold">Jacky Zhao – Resume</h1>
-            <a
-                href={resumeFile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            >
-                View Full PDF
-            </a>
-        </div>
+        <section className="pt-20 min-h-screen bg-gradient-to-tr bg-blue-50 min-h-screen p-6">
+            <div className="flex flex-col items-center justify-center gap-4 mb-8">
+                <h2 className="text-3xl font-semibold text-blue-600 text-center">
+                    Jacky Zhao - Resume
+                </h2>
+                <a
+                    href={resumeFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                >
+                    View Full PDF
+                </a>
+            </div>
+
+
+            {/* <div className="pt-20" /> */}
 
             <Document
                 file={resumeFile}
