@@ -2,6 +2,7 @@ import React from "react";
 import tastiImage from "./project_images/tasti.png";
 import pwebimage from "./project_images/pweb.png";
 import marioimage from "./project_images/mario.png";
+import sae from "./project_images/sae.png";
 const projects = [
     {
         title: "Tasti Map",
@@ -35,19 +36,15 @@ const projects = [
         // demo: "https://jackyjz.github.io/JZSITE2025/",
     },
     {
-        title: "Portfolio Website",
+        title: "Electrical Team member, SAE Aero Design Team, UAS, University of Toronto Aerospace Team (UTAT)",
         description:
-            "My personal portfolio built with React and Tailwind CSS to showcase my projects, resume, and contact information.",
+            "Focusing on Sensor and computer integration, Motor testing and motor-propeller matching, Circuit design and integration, ",
         features: [
-            "Fully responsive design",
-            "Resume PDF preview with download",
-            "Clean navigation and animations",
+            "Optimized flight system of the UT-24 Minerva and PADA planes. Working with electrical components such as receivers, servo motors, Electronic Speed Controller (ESC), Battery Eliminator Circuit (BEC), GPS, avionics battery, etc",
+            "Paticipated in UT-25 Stratus Pixhawk PCB design (schematic stages) with heavily focusing on servo control.",
         ],
-        tech: ["React", "Tailwind CSS", "Vite", "React-PDF"],
-        image: pwebimage,
-        demo: "https://jackyjz.github.io/JZSITE2025/",
-        github: "https://github.com/Jackyjz/JZSITE2025",
-
+        tech: ["Altium", "Pixhawk", "QGroundControl", "RC Receiver", "KiCad", "UART", "PWM",],
+        image: sae,
     },
 ];
 
