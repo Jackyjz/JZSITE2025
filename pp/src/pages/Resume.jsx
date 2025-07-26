@@ -24,7 +24,7 @@ export default function Resume() {
     return (
         <section className="pt-20 min-h-screen bg-gradient-to-tr bg-blue-50 min-h-screen p-6">
             <div className="flex flex-col items-center justify-center gap-4 mb-8">
-                <h2 className="text-3xl font-semibold text-blue-600 text-center">
+                <h2 className="text-4xl font-semibold text-blue-800 text-center">
                     Jacky Zhao - Resume
                 </h2>
                 <a
