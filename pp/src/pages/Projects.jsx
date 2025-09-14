@@ -5,8 +5,35 @@ import pwebimage from "./project_images/pweb.png";
 import marioimage from "./project_images/mario.png";
 import sae from "./project_images/sae.png";
 import dbot from "./project_images/dbot.png";
+import soccerdemo from "./project_images/soccermodel.png";
 
 const projects = [
+    {
+        title: "Soccer Penalty Predication Web App",
+        description:
+            "A deep learning pipeline that predicts soccer penalty kick outcomes. Using YOLOv11 for player and ball detection and a CNN-LSTM model for temporal analysis, the system classifies shot direction (left, center, right) and outcome (goal or miss).",
+        features: [
+            "Engineered a multi - staged model (YOLOv11 + ResNet-18 + LSTM pipeline) that predicted penalty outcomes (6 classes) with ~61% accuracy on unseen soccer penalty footage, proving feasibility without explicit ball tracking.",
+            "Collected and preprocessed soccer video datasets, enabling robust object detection of players and ball in challenging sports footage where datasets are scarce.",
+            "Deployed the trained model as a Streamlit web app, allowing real-time interactive demonstrations for coaches, analysts, and classmates",
+        ],
+        tech: [
+            "Python",
+            "PyTorch",
+            "YOLOv11",
+            "OpenCV",
+            "Roboflow",
+            "Streamlit",
+            "Google Colab",
+            "Confusion Matrix Evaluation",
+            "Video Frame Preprocessing"
+        ],
+        teamSize: "4",
+        duration: "4 months",
+        image: soccerdemo,
+        github: "https://github.com/Jackyjz/APS360_Project",
+        demo: "/JZSITE2025/video/360demo.mp4",
+    },
     {
         title: "Tasti Map",
         description:
@@ -19,10 +46,10 @@ const projects = [
             "Collaborated across multiple milestones using Git, delivering a robust real-world application from backend to frontend",
         ],
         tech: ["C++", "EZGL", "GTK", "OpenStreetMap", "Google Places API", "A* Search Algorithm", "Greedy Heuristics", "Dijkstra's Algorithm"],
-        teamSize: "4",
+        teamSize: "3",
         duration: "4 months",
         image: tastiImage,
-        demo: "https://pickupmap.vercel.app",
+        demo: "/JZSITE2025/video/ece297demo.mp4",
     },
     {
         title: "Shooting, Mario!",
@@ -45,9 +72,11 @@ const projects = [
     {
         title: "Electrical Team member, SAE Aero Design Team, UAS, University of Toronto Aerospace Team (UTAT)",
         description:
-            "Focusing on Sensor and computer integration, Motor testing and motor-propeller matching, Circuit design and integration, ",
+            "Focusing on Sensor and computer integration, Motor testing and motor-propeller matching, Circuit design and integration.",
         features: [
-            "Optimized flight system of the UT-24 Minerva and PADA planes. Working with electrical components such as receivers, servo motors, Electronic Speed Controller (ESC), Battery Eliminator Circuit (BEC), GPS, avionics battery, etc",
+            "Won the 5th place Overall in 2024, 2025 SAE Aero Design West competition (Advanced Class).",
+            "Won the 1st place design report award at the 2024, 2025 SAE Aero Design West competition.",
+            "Optimized flight system of the UT-24 Minerva and PADA planes. Working with electrical components such as receivers, servo motors, Electronic Speed Controller (ESC), Battery Eliminator Circuit (BEC), GPS, avionics battery, etc.",
             "Paticipated in UT-25 Stratus Pixhawk PCB design (schematic stages) with heavily focusing on servo control.",
         ],
         tech: ["Altium", "Pixhawk", "QGroundControl", "Circuit", "RC Receiver", "KiCad", "UART", "PWM",],
@@ -56,7 +85,7 @@ const projects = [
         duration: "2 years",
     },
     {
-        title: "Website Backend Aid",
+        title: "Website Backend Researcher",
         description:
             "Assisted a professor from ECE department in improving a website, designed to aid over 200 students within the ECE faculty at the University of Toronto",
         features: [
@@ -72,6 +101,7 @@ const projects = [
         duration: "3 months",
     },
 ];
+const containProjects = ["Website Backend Aid", "Soccer Penalty Predication Web App"];
 
 const Projects = () => {
     return (
@@ -87,7 +117,7 @@ const Projects = () => {
                             <img
                                 src={project.image}
                                 alt={project.title}
-                                className={`w-full h-100 rounded-t-lg bg-white ${project.title === "Website Backend Aid" ? "object-contain" : "object-cover"
+                                className={`w-full h-100 rounded-t-lg bg-white ${containProjects.includes(project.title) ? "object-contain" : "object-cover"
                                     }`}
                             />
                             <div className="p-6">
