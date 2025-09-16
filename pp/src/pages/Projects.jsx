@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { User } from "lucide-react";
 import tastiImage from "./project_images/tasti.png";
 import pwebimage from "./project_images/pweb.png";
@@ -6,7 +6,7 @@ import marioimage from "./project_images/mario.png";
 import sae from "./project_images/sae.png";
 import dbot from "./project_images/dbot.png";
 import soccerdemo from "./project_images/soccermodel.png";
-
+import connectfour from "./project_images/connectfour.png";
 const projects = [
     {
         title: "Soccer Penalty Predication Web App",
@@ -33,6 +33,7 @@ const projects = [
         image: soccerdemo,
         github: "https://github.com/Jackyjz/APS360_Project",
         demo: "/JZSITE2025/video/360demo.mp4",
+        types: ["Software", "ML"],
     },
     {
         title: "Tasti Map",
@@ -50,6 +51,7 @@ const projects = [
         duration: "4 months",
         image: tastiImage,
         demo: "/JZSITE2025/video/ece297demo.mp4",
+        types: ["Software"],
     },
     {
         title: "Shooting, Mario!",
@@ -59,15 +61,17 @@ const projects = [
             "Designed game logic and player-object interactions using custom finite state machines (FSMs)",
             "Rendered real-time VGA graphics (sprites, bullets, collisions) via memory-mapped video output",
             "Implemented efficient bullet mechanics with background-preserving erasure logic",
-            "Embedded C Programming on the Nios V soft processor",
+            "Player Interaction via PS2 keyboard input",
+            "Implemented real-time game audio on the DE1-SoC by configuring the audio codec and writing C drivers to generate and play sound effects triggered by player inputs.",
             "Deployed on Altera DE1-SoC FPGA using hardware/software interfacing"
         ],
-        tech: ["NIOS V", "Embedded C", "Memory-mapped I/O", "VGA signal control Places API", "Git-based collaboration"],
+        tech: ["NIOS V", "Embedded C", "Memory-mapped I/O", "VGA signal control Places API", "PS2", "Git"],
         image: marioimage,
         github: "https://github.com/Jackyjz/ECE243_Shooting_game_Project",
         teamSize: "2",
         duration: "2 months",
         // demo: "https://jackyjz.github.io/JZSITE2025/",
+        types: ["Hardware", "Embedded"],
     },
     {
         title: "Electrical Team member, SAE Aero Design Team, UAS, University of Toronto Aerospace Team (UTAT)",
@@ -83,6 +87,28 @@ const projects = [
         image: sae,
         teamSize: "6",
         duration: "2 years",
+        types: ["Hardware"],
+    },
+    {
+        title: "Connect4 on FPGA",
+        description:
+            "Designed and implemented a hardware version of the Connect-4 game using Verilog (VHDL), integrating keyboard input, real-time VGA rendering, and rule-based game logic.",
+        features: [
+            "Built and deployed on the Altera DE1-SoC FPGA board with external VGA monitor and PS/2 keyboard.",
+            "Controlled game flow including piece movement, dropping, win detection, and turn alternation with Finite State Machine (FSM).",
+            "Rendered a dynamic 7x6 Connect-4 board and updated in real time as players made moves with VGA signal pipeline.",
+            "Designed Verilog modules to manage board state, enforce turn-taking, check for win/draw conditions, and reset the board.",
+            "Verified design using DESim simulation and Quartus synthesis to ensure correctness before hardware deployment.",
+
+        ],
+        tech: ["Altera DE1-SoC FPGA", "Verilog", "Quartus Prime", "DESim", "Memory-mapped I/O", "FSM", "VGA signal control", "Git"],
+        image: connectfour,
+        github: "https://github.com/AlexGuo43/Connect4",
+        teamSize: "2",
+        duration: "2 months",
+        // demo: "https://jackyjz.github.io/JZSITE2025/",
+        types: ["Hardware", "Embedded"],
+        demo: "https://youtu.be/0-wT1ND7T94?si=pzN3pM-h1FtUTOaL"
     },
     {
         title: "Website Backend Researcher",
@@ -99,17 +125,46 @@ const projects = [
         image: dbot,
         teamSize: "6",
         duration: "3 months",
+        types: ["Software"],
     },
 ];
 const containProjects = ["Website Backend Aid", "Soccer Penalty Predication Web App"];
 
 const Projects = () => {
+    const [activeType, setActiveType] = useState("All");
+
+    // Collect unique types across all projects
+    const typeOptions = ["All", "Hardware", "Software", "ML", "Embedded"];
+
+    const shown = useMemo(() => {
+        if (activeType === "All") return projects;
+        return projects.filter((p) => (p.types || []).includes(activeType));
+    }, [activeType]);
     return (
         <section className="min-h-screen bg-blue-50 py-20 px-6">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">My Projects</h2>
+
+                {/* Filters */}
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+                    {typeOptions.map((t) => (
+                        <button
+                            key={t}
+                            onClick={() => setActiveType(t)}
+                            className={`px-4 py-2 rounded-xl border transition text-sm
+                ${activeType === t
+                                    ? "bg-blue-600 text-white border-blue-600"
+                                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                                }`}
+                        >
+                            {t}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Grid */}
                 <div className="grid md:grid-cols-2 gap-10">
-                    {projects.map((project, index) => (
+                    {shown.map((project, index) => (
                         <div
                             key={index}
                             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
@@ -117,13 +172,26 @@ const Projects = () => {
                             <img
                                 src={project.image}
                                 alt={project.title}
-                                className={`w-full h-100 rounded-t-lg bg-white ${containProjects.includes(project.title) ? "object-contain" : "object-cover"
+                                className={`w-full h-64 md:h-72 bg-white ${containProjects.includes(project.title) ? "object-contain" : "object-cover"
                                     }`}
                             />
+
                             <div className="p-6">
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                    {(project.types || []).map((t) => (
+                                        <span
+                                            key={t}
+                                            className="px-2.5 py-0.5 rounded-full text-xs bg-blue-50 text-blue-700 border border-blue-200"
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
+                                </div>
+
                                 <h3 className="text-2xl font-bold text-blue-700 mb-2">{project.title}</h3>
                                 <p className="text-gray-700 mb-3">{project.description}</p>
-                                <ul className="list-disc list-inside text-gray-600 mb-3">
+
+                                <ul className="list-disc list-inside text-gray-600 mb-4 space-y-1">
                                     {project.features.map((feature, i) => (
                                         <li key={i}>{feature}</li>
                                     ))}
