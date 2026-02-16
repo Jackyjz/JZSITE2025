@@ -7,7 +7,35 @@ import sae from "./project_images/sae.png";
 import dbot from "./project_images/dbot.png";
 import soccerdemo from "./project_images/soccermodel.png";
 import connectfour from "./project_images/connectfour.png";
+import hack from "./project_images/hack.png";
+
 const projects = [
+    {
+        title: "MakeUoft 2026 Hackthon - Safety Beacon",
+        description:
+            "SafetyBeacon reads heart rate + motion + temperature/humidity on an ESP32, detects risky events (impact / abnormal HR / overheating), switches to WARNING, beeps until acknowledged, and sends compact JSON over BLE to an Android app. In WARNING it also includes GPS info (satellites + lat/lon) when available, and the Android app displays real-time status and data while giving feedback to the user to make decisions.",
+        features: [
+            "ESP32 (Main Controller) + MAX30100 speaker (Power amplified speaker) + MPU6050 (Motion Sensor) + DHT11 (Temp & Humidity Sensor) + DFR1103(GPS)",
+            "ESP32 Programming: state machine (NORMAL/WARNING), sensor sampling, threshold logic, snapshot + GPS polling, BLE notify JSON",
+            "Android (Kotlin + Jetpack Compose): BLE scan/connect/subscribe, parse JSON, display live cards + raw JSON debug window",
+        ],
+        tech: [
+            "ESP32",
+            "Sensors",
+            "BLE",
+            "C++",
+            "I2C",
+            "I2S",
+            "Kotlin",
+            "Android Studio",
+        ],
+        teamSize: "3",
+        duration: "24hrs",
+        image: hack,
+        github: "https://github.com/Jackyjz/2026MakethonTeam294c4",
+        demo: "https://youtu.be/zDJP2vL_iGA",
+        types: ["Embedded", "Software"],
+    },
     {
         title: "Soccer Penalty Predication Web App",
         description:
