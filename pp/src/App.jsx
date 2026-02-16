@@ -7,7 +7,7 @@ import Resume from './pages/Resume';
 
 function App() {
   return (
-    <Router basename="/JZSITE2025">
+    <Router basename="/">
       <Navbar />
       <div >
         <Routes>
