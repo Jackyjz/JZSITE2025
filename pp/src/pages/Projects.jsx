@@ -60,7 +60,7 @@ const projects = [
         duration: "4 months",
         image: soccerdemo,
         github: "https://github.com/Jackyjz/APS360_Project",
-        demo: "/JZSITE2025/video/360demo.mp4",
+        demo: "/video/360demo.mp4",
         types: ["Software", "ML"],
     },
     {
@@ -78,7 +78,7 @@ const projects = [
         teamSize: "3",
         duration: "4 months",
         image: tastiImage,
-        demo: "/JZSITE2025/video/ece297demo.mp4",
+        demo: "/video/ece297demo.mp4",
         types: ["Software"],
     },
     {
